@@ -44,7 +44,7 @@ class StratosOS {
         setTimeout(() => {
             const loadingScreen = document.getElementById('loading-screen');
             // Play startup sound
-            const startupSound = new Audio('/Startup.mp3');
+            const startupSound = new Audio('https://nexucore.github.io/StratosOS/Startup.mp3');
             startupSound.play().catch(() => {});
             loadingScreen.classList.add('hidden');
             setTimeout(() => {
@@ -1538,7 +1538,7 @@ class StratosOS {
 
     crashSystem() {
         // Play crash sound
-        const crashSound = new Audio('/crash.mp3');
+        const crashSound = new Audio('https://nexucore.github.io/StratosOS/crash.mp3');
         crashSound.play().catch(() => {});
 
         // Hide all screens
