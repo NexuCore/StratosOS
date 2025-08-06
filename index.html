@@ -1,0 +1,245 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stratos OS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/backgrounds.css">
+    <link rel="stylesheet" href="styles/windows.css">
+    <link rel="stylesheet" href="styles/lockscreen.css">
+    <link rel="stylesheet" href="styles/desktop.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <script type="importmap">
+    {
+        "imports": {
+            "canvas-confetti": "https://cdn.skypack.dev/canvas-confetti"
+        }
+    }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-logo">Stratos OS</div>
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Initializing...</div>
+    </div>
+
+    <!-- Shutdown Screen -->
+    <div id="shutdown-screen" class="shutdown-screen">
+        <div class="shutdown-content">
+            <div class="shutdown-logo">Stratos OS</div>
+            <div class="shutdown-spinner"></div>
+            <h2>Shutting down...</h2>
+            <p>Please wait while Stratos OS powers off</p>
+        </div>
+    </div>
+
+    <!-- Powered Off Screen -->
+    <div id="powered-off-screen" class="powered-off-screen">
+        <button id="power-on-btn" class="power-on-btn">
+            <span>⚡</span>
+            Power On
+        </button>
+    </div>
+
+    <!-- White Screen of Death (WSOD) -->
+    <div id="wsod-screen" class="wsod-screen">
+        <div class="wsod-content">
+            <div class="wsod-icon">:(</div>
+            <h1>A fatal error has occurred.</h1>
+            <p>Stratos OS has encountered a problem and needs to shut down. We're sorry for the inconvenience.</p>
+            <p class="error-code">Error Code: KERNEL_PANIC - CRITICAL_FILE_DELETED</p>
+            <button id="restart-from-wsod-btn" class="wsod-restart-btn">Restart System</button>
+        </div>
+    </div>
+
+    <!-- Lockscreen -->
+    <div id="lockscreen" class="screen active">
+        <div class="background-patterns"></div>
+        <div class="lockscreen-container">
+            <div id="lock-clock" class="clock">10:10</div>
+            <h1>Stratos OS</h1>
+            <p>Welcome. Please unlock to continue.</p>
+            <button id="unlock-btn">Unlock</button>
+        </div>
+    </div>
+
+    <div id="desktop-screen" class="screen">
+        <div class="system-status-bar">
+            <div class="wifi-icon" id="system-wifi">
+                <span>StarLink-Orbital</span>
+            </div>
+            <div class="battery-icon" id="system-battery">
+                <span>100%</span>
+            </div>
+        </div>
+        
+        <div class="background-patterns desktop-bg">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+        <main class="desktop-main">
+            <div class="desktop-clock" id="desktop-clock">10:10</div>
+        </main>
+        <div class="taskbar">
+            <button class="start-menu-btn" id="start-btn">Start</button>
+            <div class="system-tray">
+                <span class="wifi-icon"></span>
+                <span class="battery-icon"></span>
+                <span class="date-display" id="date-display">Jan 1, 2025</span>
+            </div>
+        </div>
+
+        <!-- Spotlight Search -->
+        <div id="spotlight" class="spotlight-overlay">
+            <div class="spotlight-container">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="spotlight-input" placeholder="Search apps, files, and commands..." autofocus>
+                    <button class="close-btn" id="spotlight-close">×</button>
+                </div>
+                <div class="search-results" id="search-results">
+                    <!-- Dynamic results -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Apple-style app library overlay -->
+        <div id="app-library" class="app-library-overlay">
+            <div class="library-container">
+                <div class="library-header">
+                    <h2>App Library</h2>
+                    <div class="user-profile">
+                        <div class="user-avatar">👤</div>
+                        <span class="user-name">User</span>
+                        <div class="power-menu-trigger">
+                            <span class="power-icon">⚡</span>
+                            <div class="power-dropdown">
+                                <button class="power-btn" id="lock-btn">
+                                    <span class="power-icon">🔒</span>
+                                    <span>Lock</span>
+                                </button>
+                                <button class="power-btn" id="restart-btn">
+                                    <span class="power-icon">🔄</span>
+                                    <span>Restart</span>
+                                </button>
+                                <button class="power-btn" id="shutdown-btn">
+                                    <span class="power-icon">🛑</span>
+                                    <span>Shutdown</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="app-grid">
+                    <div class="app-icon">
+                        <div class="icon-placeholder">📁</div>
+                        <span>Files</span>
+                    </div>
+                    <div class="app-icon">
+                        <div class="icon-placeholder">🎨</div>
+                        <span>Canvas</span>
+                    </div>
+                    <div class="app-icon">
+                        <div class="icon-placeholder">⚙️</div>
+                        <span>Settings</span>
+                    </div>
+                    <div class="app-icon">
+                        <div class="icon-placeholder">🗓️</div>
+                        <span>Calendar</span>
+                    </div>
+                    <div class="app-icon">
+                        <div class="icon-placeholder">🌐</div>
+                        <span>Browser</span>
+                    </div>
+                    <div class="app-icon">
+                        <div class="icon-placeholder">📝</div>
+                        <span>Notes</span>
+                    </div>
+                    <div class="app-icon">
+                        <div class="icon-placeholder">🔍</div>
+                        <span>Search</span>
+                    </div>
+                    <div class="app-icon">
+                        <div class="icon-placeholder">🏪</div>
+                        <span>Store</span>
+                    </div>
+                    <div class="app-icon">
+                        <div class="icon-placeholder">ℹ️</div>
+                        <span>About</span>
+                    </div>
+                    <div class="app-icon">
+                        <div class="icon-placeholder">⌨️</div>
+                        <span>Terminal</span>
+                    </div>
+                    <div class="app-icon">
+                        <div class="icon-placeholder">🖩</div>
+                        <span>Calculator</span>
+                    </div>
+                    <div class="app-icon">
+                        <div class="icon-placeholder">👨‍💻</div>
+                        <span>Stratosphere</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stratos OS Winver App -->
+        <div id="winver-app" class="winver-app" style="display: none;">
+            <div class="winver-header">
+                <h3>About Stratos OS</h3>
+                <button class="winver-close" id="winver-close">×</button>
+            </div>
+            <div class="winver-content">
+                <div class="winver-brand">
+                    <h2>Stratos OS</h2>
+                    <p>Version 1.0.0 (Build 2025.1)</p>
+                </div>
+                
+                <div class="winver-section">
+                    <h4>System Information</h4>
+                    <p>Operating System: Stratos OS</p>
+                    <p>Version: 1.0.0</p>
+                    <p>Build: 2025.1</p>
+                    <p>Architecture: Universal</p>
+                </div>
+                
+                <div class="winver-section">
+                    <h4> 2025 Stratos OS</h4>
+                    <p>All rights reserved. This software is licensed under the MIT License.</p>
+                </div>
+                
+                <div class="settings-section" style="display: none;">
+                    <h3>System</h3>
+                    <button class="settings-btn" id="show-about">ℹ️ About Stratos OS</button>
+                    <button class="settings-btn danger" id="shutdown-btn">🛑 Shutdown</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom OS Prompt/Alert Modal -->
+        <div id="os-modal" class="os-modal-overlay" style="display: none;">
+            <div class="os-modal-container">
+                <h3 id="os-modal-title">Modal Title</h3>
+                <p id="os-modal-message">Modal message.</p>
+                <input type="text" id="os-modal-input" style="display: none;" />
+                <div class="os-modal-buttons">
+                    <button id="os-modal-ok">OK</button>
+                    <button id="os-modal-cancel" style="display: none;">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/registry.js"></script>
+    <script src="js/content.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

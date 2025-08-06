@@ -1,0 +1,168 @@
+.window-header {
+    background: var(--accent-bg);
+    border-bottom: var(--border-width) solid var(--border-color);
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+    user-select: none;
+    position: relative;
+}
+
+/* Remove old notes-toolbar positioning */
+.notes-toolbar {
+    display: none;
+}
+
+/* Update notes container for new layout */
+.notes-container {
+    display: flex;
+    height: 100%;
+    font-family: 'Space Mono', monospace;
+    position: relative;
+}
+
+.notes-sidebar {
+    width: 300px;
+    border-right: var(--border-width) solid var(--border-color);
+    overflow-y: auto;
+    background: #fafafa;
+}
+
+.notes-editor {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+#note-title-input {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border: none;
+    border-bottom: var(--border-width) solid var(--border-color);
+    padding: 0.8rem 0;
+    margin-bottom: 1rem;
+    background: transparent;
+    outline: none;
+}
+
+#note-content-input {
+    flex: 1;
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem;
+    line-height: 1.8;
+    border: none;
+    resize: none;
+    background: transparent;
+    outline: none;
+    padding: 0.5rem 0;
+}
+
+/* Updated window header with integrated notes controls */
+.window-header.notes-header {
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+}
+
+.notes-controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.notes-control-btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.4rem 0.8rem;
+    background: var(--primary-bg);
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: 2px 2px 0px var(--border-color);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.notes-control-btn:hover {
+    background: var(--accent-bg);
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px var(--border-color);
+}
+
+.notes-control-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+.notes-control-btn.primary {
+    background: var(--accent-bg);
+}
+
+.notes-control-btn.danger:hover {
+    background: #ff6b6b;
+    color: white;
+}
+
+.window-close {
+    background: var(--primary-bg);
+    border: var(--border-width) solid var(--border-color);
+    width: 24px;
+    height: 24px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    margin-left: auto;
+    border-radius: 0;
+}
+
+.window-close:hover {
+    background: #ff6b6b;
+    transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .notes-sidebar {
+        width: 100%;
+        height: 150px;
+        border-right: none;
+        border-bottom: var(--border-width) solid var(--border-color);
+        display: flex;
+        overflow-x: auto;
+    }
+    
+    .notes-container {
+        flex-direction: column;
+    }
+}
+
+.browser-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-family: 'Space Mono', monospace;
+}
+
+.browser-toolbar {
+    background: #fafafa;
+    border-bottom: var(--border-width) solid var(--border-color);
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#browser-frame {
+    flex: 1;
+    width: 100%;
+    background: white;
+    min-height: 400px;
+}
