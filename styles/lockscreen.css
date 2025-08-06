@@ -1,0 +1,57 @@
+/* Lockscreen Styles */
+
+#lockscreen {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.lockscreen-container {
+    background: var(--primary-bg);
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
+    padding: 3rem;
+    width: 90%;
+    max-width: 450px;
+}
+
+.clock {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+#lockscreen h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+#lockscreen p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+#unlock-btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    background: var(--accent-bg);
+    border: var(--border-width) solid var(--border-color);
+    padding: 0.8rem 2.5rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
+    transition: all 0.15s ease;
+}
+
+#unlock-btn:hover {
+    transform: translate(var(--shadow-offset), var(--shadow-offset));
+    box-shadow: none;
+}
+
+#unlock-btn:active {
+    transform: translate(calc(var(--shadow-offset) - 2px), calc(var(--shadow-offset) - 2px));
+}
+
